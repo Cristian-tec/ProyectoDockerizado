@@ -1,0 +1,5 @@
+el dockerfile solo sirve para cuando hago un build, tomaria ese puerto.
+
+Cdo hago un compose toma el puerto del compose.
+
+Tener cuidado con la altura donde creo el compose y donde estan los .env!!!!!

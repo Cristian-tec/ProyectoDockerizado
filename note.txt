@@ -1,0 +1,4 @@
+Proyecto realizado con Vite
+
+Se hizo el paso de npx create-react-app a Vite
+
