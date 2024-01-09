@@ -14,7 +14,9 @@ import axios from 'axios'
 
 //axios.defaults.baseURL = `${BASE_URL}:${PORT}/`
 
-axios.defaults.baseURL = `api-food.duckdns.org`
+axios.defaults.baseURL = `https://api-food.duckdns.org`
+
+//axios.defaults.baseURL = `https://postgres-vps.duckdns.org/`
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
