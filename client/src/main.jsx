@@ -13,7 +13,7 @@ import axios from 'axios'
 //const PORT = process.env.REACT_APP_API_PORT;
 
 //axios.defaults.baseURL = `${BASE_URL}:${PORT}/`
-axios.defaults.baseURL = `http://168.75.74.50:4000`
+axios.defaults.baseURL = `api-food.duckdns.org`
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>

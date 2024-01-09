@@ -1,5 +1,10 @@
 version: '3'
 
+networks:
+  api:
+    name: api_vps
+    driver: bridge
+
 services: 
   postgres:
     container_name: postgres_db
@@ -12,8 +17,9 @@ services:
       - POSTGRES_PASSWORD=123456
       - POSTGRES_DB=food
     networks:
-      red_interna:
-        ipv4_address: 192.168.20.20
+      api:
+        aliases: 
+          - postgres_db
 
   back:
     depends_on:
@@ -27,16 +33,12 @@ services:
       - PORT=${PORT}               # recordar colocar el .env a la misma altura que el compose!!!
       - DB_USER=${DB_USER}         # a la hora del up, revisar que ambos .env esten iguales
       - DB_PASSWORD=${DB_PASSWORD} # el que esta dentro de /api y en la raiz!!!
-      - DB_HOST=${DB_HOST}       # porque a la hora de hacer el build toma el .env que esta a la 
+      - DB_HOST=postgres_db        # porque a la hora de hacer el build toma el .env que esta a la 
       - DB_NAME=${DB_NAME}         # altura del compose. Otra seria crear otro compose dentro de api
       - DB_PORT=${DB_PORT}
       - API_KEY=${API_KEY}
     networks:
-      red_interna:
-        ipv4_address: 192.168.20.10
+      api:
+        aliases: 
+          - api_api
 
-networks:
-    red_interna:
-        ipam:
-            config:
-              - subnet: 192.168.20.0/24

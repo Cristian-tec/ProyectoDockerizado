@@ -11,6 +11,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123456
       - POSTGRES_DB=food
+    expose:
+      - "5000"
     networks:
       red_interna:
         ipv4_address: 192.168.20.20
@@ -24,7 +26,6 @@ services:
     ports:
       - "4000:4000"
     environment:
-<<<<<<< HEAD
       - PORT=${PORT}               # recordar colocar el .env a la misma altura que el compose!!!
       - DB_USER=${DB_USER}         # a la hora del up, revisar que ambos .env esten iguales
       - DB_PASSWORD=${DB_PASSWORD} # el que esta dentro de /api y en la raiz!!!
@@ -32,15 +33,6 @@ services:
       - DB_NAME=${DB_NAME}         # altura del compose. Otra seria crear otro compose dentro de api
       - DB_PORT=${DB_PORT}
       - API_KEY=${API_KEY}
-=======
-      - PORT=4000
-      - DB_USER=postgres
-      - DB_PASSWORD=123456
-      - DB_HOST=ip del vps
-      - DB_NAME=food
-      - DB_PORT=5400
-      - API_KEY=dcea45dee6ed4f50834f13a52413b043
->>>>>>> 1ce49e2885f8fadd2c7a586ff4bdc94f3ebd0aec
     networks:
       red_interna:
         ipv4_address: 192.168.20.10

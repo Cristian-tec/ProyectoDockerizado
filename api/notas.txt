@@ -1,4 +1,4 @@
-el dockerfile solo sirve para cuando hago un build, tomaria ese puerto.
+El dockerfile solo sirve para cuando hago un build, tomaria ese puerto.
 
 Cdo hago un compose toma el puerto del compose.
 
