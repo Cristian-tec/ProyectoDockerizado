@@ -1,6 +1,7 @@
 version: '3'
 
 services: 
+
   postgres:
     container_name: postgres_db
     image: postgres:12-alpine
@@ -11,8 +12,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123456
       - POSTGRES_DB=food
-    expose:
-      - "5000"
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./data_db:/var/lib/postgresql/data/
     networks:
       red_interna:
         ipv4_address: 192.168.20.20
@@ -22,14 +24,14 @@ services:
       - postgres
     container_name: backend
     restart: always
-    build: ./api
+    build: ./
     ports:
-      - "4000:4000"
+      - "4000:${PORT}"
     environment:
       - PORT=${PORT}               # recordar colocar el .env a la misma altura que el compose!!!
       - DB_USER=${DB_USER}         # a la hora del up, revisar que ambos .env esten iguales
       - DB_PASSWORD=${DB_PASSWORD} # el que esta dentro de /api y en la raiz!!!
-      - DB_HOST=192.168.20.1       # porque a la hora de hacer el build toma el .env que esta a la 
+      - DB_HOST=${DB_HOST}       # porque a la hora de hacer el build toma el .env que esta a la
       - DB_NAME=${DB_NAME}         # altura del compose. Otra seria crear otro compose dentro de api
       - DB_PORT=${DB_PORT}
       - API_KEY=${API_KEY}
