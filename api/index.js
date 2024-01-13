@@ -23,7 +23,7 @@ const { createDiets } = require('./src/controllers/controllers')
 require('dotenv').config();
 const { PORT } = process.env;
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ alter: true }).then(() => {
   server.listen(process.env.PORT, () => {
     createDiets();
     console.log(`API Food listening at ---> ${PORT}`); // eslint-disable-line no-console

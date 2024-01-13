@@ -14,7 +14,8 @@ import axios from 'axios'
 
 //axios.defaults.baseURL = `${BASE_URL}:${PORT}/`
 
-axios.defaults.baseURL = `https://api-food.duckdns.org`
+//axios.defaults.baseURL = `https://api-food.duckdns.org`192.168.20.10
+axios.defaults.baseURL = 'http://localhost:4000/'
 
 //axios.defaults.baseURL = `https://postgres-vps.duckdns.org/`
 

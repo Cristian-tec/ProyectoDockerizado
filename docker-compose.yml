@@ -24,20 +24,27 @@ services:
       - postgres
     container_name: backend
     restart: always
-    build: ./
+    build: ./api
     ports:
       - "4000:${PORT}"
     environment:
       - PORT=${PORT}               # recordar colocar el .env a la misma altura que el compose!!!
       - DB_USER=${DB_USER}         # a la hora del up, revisar que ambos .env esten iguales
       - DB_PASSWORD=${DB_PASSWORD} # el que esta dentro de /api y en la raiz!!!
-      - DB_HOST=${DB_HOST}       # porque a la hora de hacer el build toma el .env que esta a la
+      - DB_HOST=${DB_HOST}         # porque a la hora de hacer el build toma el .env que esta a la
       - DB_NAME=${DB_NAME}         # altura del compose. Otra seria crear otro compose dentro de api
       - DB_PORT=${DB_PORT}
       - API_KEY=${API_KEY}
     networks:
       red_interna:
         ipv4_address: 192.168.20.10
+
+  front:
+    container_name: front
+    restart: always
+    build: ./client
+    ports:
+      - "5000:3000"
 
 networks:
     red_interna:
